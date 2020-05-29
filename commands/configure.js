@@ -20,7 +20,7 @@ const writeConfiguration = (aFeatures, sPath) => {
                 let aSelectedFeatures = renderer.getSelectedFeatures();
                 console.log(`${colors.bold.underline(answer.toUpperCase())}: ${aSelectedFeatures}`);
 
-                let stOutput = fs.createWriteStream(path.join(sPath, answer, '.config'));
+                let stOutput = fs.createWriteStream(path.join(sPath, `${answer}.config`));
                 aFeatures.forEach(sFeature => {
                     stOutput.write(`${sFeature}\n`)
                 });
