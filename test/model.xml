@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and abstract="true" mandatory="true" name="TemplateGenerator">
+            <feature mandatory="true" name="Base"/>
+            <alt abstract="true" mandatory="true" name="CodeBase">
+                <and name="Application">
+                    <alt abstract="true" mandatory="true" name="Navigation">
+                        <alt name="Routing">
+                            <and abstract="true" name="Simple">
+                                <and mandatory="true" name="OnePage">
+                                    <and name="TwoPage">
+                                        <feature name="ThreePage"/>
+                                    </and>
+                                </and>
+                            </and>
+                            <alt name="MasterDetail">
+                                <feature name="WithDummyDetail"/>
+                                <feature name="WithEmptyDetail"/>
+                            </alt>
+                            <alt name="FlexibleColumnLayout">
+                                <feature name="TwoPageStartOne"/>
+                                <feature name="MasterDetailType"/>
+                            </alt>
+                        </alt>
+                        <feature name="NoRouting"/>
+                    </alt>
+                    <and mandatory="true" name="FirstPage">
+                        <alt abstract="true" name="Pattern">
+                            <feature name="Table"/>
+                            <feature name="List"/>
+                            <feature name="Worklist"/>
+                            <feature name="Toolpage"/>
+                        </alt>
+                    </and>
+                    <and name="SecondPage">
+                        <feature name="ObjectPageSecond"/>
+                    </and>
+                    <and name="ThirdPage">
+                        <feature name="ObjectPageThird"/>
+                    </and>
+                </and>
+                <feature name="Library"/>
+            </alt>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <description>Without routing we can not have a third or even a second page.</description>
+            <imp>
+                <var>NoRouting</var>
+                <not>
+                    <disj>
+                        <var>SecondPage</var>
+                        <var>ThirdPage</var>
+                    </disj>
+                </not>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>TwoPage</var>
+                <var>SecondPage</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>ThreePage</var>
+                <var>ThirdPage</var>
+            </imp>
+        </rule>
+        <rule>
+            <imp>
+                <var>MasterDetail</var>
+                <conj>
+                    <var>FirstPage</var>
+                    <var>SecondPage</var>
+                </conj>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

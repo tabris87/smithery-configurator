@@ -1,0 +1,17 @@
+{
+    "name": "featurecli-configurator",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.js",
+    "bin": "app.js",
+    "scripts": {
+        "test": "node app show ./test/model.xml"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "commander": "^5.1.0",
+        "xml-reader": "^2.4.3"
+    }
+}
