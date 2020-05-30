@@ -9,6 +9,7 @@ const showFeatureModel = model => {
         let renderer = new ModelRenderer(data);
         renderer.render();
         renderer.showLegend();
+        process.exit();
     });
 
     fs.readFile(model, {

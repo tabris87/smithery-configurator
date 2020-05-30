@@ -27,6 +27,7 @@ const writeConfiguration = (aFeatures, sPath) => {
                 stOutput.end();
                 console.log('Finished!');
                 rl.close();
+                process.exit();
             } else {
                 console.log(colors.red("Please provide a configuration name"));
                 rl.question(questions["configName"].text, questions["configName"].callback);
@@ -38,6 +39,7 @@ const writeConfiguration = (aFeatures, sPath) => {
         rl.question('Do you want to write the configuration? (y/N)', (answer = "N") => {
             if (answer.toUpperCase() === "N" || answer === "") {
                 rl.close();
+                process.exit();
             } else {
                 questionName();
             }
