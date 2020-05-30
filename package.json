@@ -5,7 +5,9 @@
     "main": "index.js",
     "bin": "app.js",
     "scripts": {
-        "test": "node app show ./test/model.xml"
+        "test": "node app show ./test/model.xml",
+        "start": "node app configure ./test/model.xml",
+        "debug": "node --inspect-brk app show ./test/model.xml"
     },
     "author": "",
     "license": "ISC",

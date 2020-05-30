@@ -55,10 +55,15 @@ const showFeatureModel = (model, sPath = './') => {
         renderer.showSelected(true);
         renderer.render();
         const ask = () => {
-            rl.question('Mark/Unmark a feature by typing the name (:q for finishing configuration): ',
+            rl.question('Mark/Unmark a feature by typing the name (:q for finishing configuration, :l for the legend): ',
                 answer => {
                     if (answer === ":q") {
                         writeConfiguration(renderer.getSelectedFeatures(), sPath);
+                    } else if (answer === ":l") {
+                        renderer.addAdditionalWritenLinesToClear(1);
+                        renderer.render();
+                        renderer.showLegend();
+                        ask()
                     } else {
                         let marked = renderer.markFeatureSelected(answer);
                         if (marked) {
@@ -66,7 +71,7 @@ const showFeatureModel = (model, sPath = './') => {
                             renderer.render();
                             ask()
                         } else {
-                            console.log("Sry the feature cannot be found! Did you misspelled it?");
+                            console.log("Sry the feature cannot be found/selected! Did you misspelled it?");
                             renderer.addAdditionalWritenLinesToClear(2);
                             ask();
                         }
