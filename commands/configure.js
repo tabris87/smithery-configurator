@@ -17,17 +17,19 @@ const writeConfiguration = (aFeatures, sPath) => {
     const questionName = () => {
         rl.question('How do want to call it? ', answer => {
             if (answer !== "") {
-                let aSelectedFeatures = renderer.getSelectedFeatures();
-                console.log(`${colors.bold.underline(answer.toUpperCase())}: ${aSelectedFeatures}`);
-
                 let stOutput = fs.createWriteStream(path.join(sPath, `${answer}.config`));
-                aFeatures.forEach(sFeature => {
-                    stOutput.write(`${sFeature}\n`)
+
+                stOutput.on('finish', () => {
+                    console.log('Finished!');
+                    rl.close();
+                    process.exit();
+                })
+                aFeatures.forEach((sFeature, iIndex, aArr) => {
+                    iIndex === (aArr.length - 1) ?
+                        stOutput.write(`${sFeature}`) :
+                        stOutput.write(`${sFeature}\n`);
                 });
                 stOutput.end();
-                console.log('Finished!');
-                rl.close();
-                process.exit();
             } else {
                 console.log(colors.red("Please provide a configuration name"));
                 rl.question(questions["configName"].text, questions["configName"].callback);
@@ -58,7 +60,9 @@ const showFeatureModel = (model, sPath = './') => {
             rl.question('Mark/Unmark a feature by typing the name (:q for finishing configuration, :l for the legend): ',
                 answer => {
                     if (answer === ":q") {
-                        writeConfiguration(renderer.getSelectedFeatures(), sPath);
+                        let aSelectedFeatures = renderer.getSelectedFeatures();
+                        console.log(`\n${colors.underline('Selected features:')} ${colors.underline(aSelectedFeatures)}\n`);
+                        writeConfiguration(aSelectedFeatures, sPath);
                     } else if (answer === ":l") {
                         renderer.addAdditionalWritenLinesToClear(1);
                         renderer.render();
