@@ -2,5 +2,6 @@
 
 module.exports = {
     show: require('./show'),
-    configure: require('./configure')
+    configure: require('./configure'),
+    convert: require('./convert')
 }

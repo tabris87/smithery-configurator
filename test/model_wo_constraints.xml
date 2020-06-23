@@ -64,67 +64,7 @@
             </alt>
         </and>
     </struct>
-    <constraints>
-        <rule>
-            <description>
-                Without routing we can not have a third or even a second page.
-            </description>
-            <imp>
-                <var>NoRouting</var>
-                <not>
-                    <disj>
-                        <var>SecondPage</var>
-                        <var>ThirdPage</var>
-                    </disj>
-                </not>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <var>TwoPage</var>
-                <var>SecondPage</var>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <var>ThreePage</var>
-                <var>ThirdPage</var>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <var>MasterDetail</var>
-                <conj>
-                    <var>FirstPage</var>
-                    <var>SecondPage</var>
-                </conj>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <conj>
-                    <var>Grunt_Build</var>
-                    <var>Application</var>
-                </conj>
-                <var>Grunt_Build_Application</var>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <conj>
-                    <var>Grunt_Build</var>
-                    <var>Library</var>
-                </conj>
-                <var>Grunt_Build_Library</var>
-            </imp>
-        </rule>
-        <rule>
-            <imp>
-                <var>Grunt_Server_Build</var>
-                <var>Grunt_Build</var>
-            </imp>
-        </rule>
-    </constraints>
+    <constraints/>
     <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
     <comments/>
     <featureOrder userDefined="false"/>

@@ -1,0 +1,126 @@
+c 1 TemplateGenerator
+c 2 Base
+c 3 CodeBase
+c 4 Application
+c 5 Library
+c 6 Navigation
+c 7 Routing
+c 8 NoRouting
+c 9 Simple
+c 10 MasterDetail
+c 11 FlexibleColumnLayout
+c 12 OnePage
+c 13 TwoPage
+c 14 ThreePage
+c 15 WithDummyDetail
+c 16 WithEmptyDetail
+c 17 TwoPageStartOne
+c 18 MasterDetailType
+c 19 FirstPage
+c 20 Pattern
+c 21 Table
+c 22 List
+c 23 Worklist
+c 24 Toolpage
+c 25 SecondPage
+c 26 ObjectPageSecond
+c 27 ThirdPage
+c 28 ObjectPageThird
+c 29 ProjectSetup
+c 30 Grunt
+c 31 ui5Tooling
+c 32 Grunt_Build
+c 33 Grunt_Build_Library
+c 34 Grunt_Build_Application
+c 35 Grunt_Server
+c 36 Grunt_Server_Build
+c 37 ui5Tooling_Server
+c 38 ui5Tooling_Server_Build
+c 39 ui5Tooling_Build
+c 40 ui5Tooling_Build_Application
+c /** End Feature Indexes */
+
+p cnf 40 78
+
+c /** Start Clauses */
+TemplateGenerator 0
+TemplateGenerator -Base 0
+Base -TemplateGenerator 0
+TemplateGenerator -CodeBase 0
+CodeBase -TemplateGenerator 0
+CodeBase -Application 0
+Application -Navigation 0
+Navigation -Application 0
+Navigation -Routing 0
+Routing -Simple 0
+Simple -OnePage 0
+OnePage -Simple 0
+OnePage -TwoPage 0
+TwoPage -ThreePage 0
+Routing -MasterDetail 0
+MasterDetail -WithDummyDetail 0
+MasterDetail -WithEmptyDetail 0
+WithDummyDetail WithEmptyDetail -MasterDetail 0
+-WithDummyDetail -WithEmptyDetail 0
+Routing -FlexibleColumnLayout 0
+FlexibleColumnLayout -TwoPageStartOne 0
+FlexibleColumnLayout -MasterDetailType 0
+TwoPageStartOne MasterDetailType -FlexibleColumnLayout 0
+-TwoPageStartOne -MasterDetailType 0
+Simple MasterDetail FlexibleColumnLayout -Routing 0
+-Simple -MasterDetail 0
+-Simple -FlexibleColumnLayout 0
+-MasterDetail -FlexibleColumnLayout 0
+Navigation -NoRouting 0
+Routing NoRouting -Navigation 0
+-Routing -NoRouting 0
+Application -FirstPage 0
+FirstPage -Application 0
+FirstPage -Pattern 0
+Pattern -Table 0
+Pattern -List 0
+Pattern -Worklist 0
+Pattern -Toolpage 0
+Table List Worklist Toolpage -Pattern 0
+-Table -List 0
+-Table -Worklist 0
+-Table -Toolpage 0
+-List -Worklist 0
+-List -Toolpage 0
+-Worklist -Toolpage 0
+Application -SecondPage 0
+SecondPage -ObjectPageSecond 0
+Application -ThirdPage 0
+ThirdPage -ObjectPageThird 0
+CodeBase -Library 0
+Application Library -CodeBase 0
+-Application -Library 0
+TemplateGenerator -ProjectSetup 0
+ProjectSetup -Grunt 0
+Grunt -Grunt_Build 0
+Grunt_Build -Grunt_Build_Library 0
+
+c current place
+
+Grunt_Build -Grunt_Build_Application 0
+Grunt_Build_Library Grunt_Build_Application -Grunt_Build 0
+-Grunt_Build_Library -Grunt_Build_Application 0
+Grunt -Grunt_Server 0
+Grunt_Server -Grunt_Server_Build 0
+ProjectSetup -ui5Tooling 0
+ui5Tooling -ui5Tooling_Server 0
+ui5Tooling_Server -ui5Tooling_Server_Build 0
+ui5Tooling -ui5Tooling_Build 0
+ui5Tooling_Build -ui5Tooling_Build_Application 0
+ui5Tooling_Build_Application -ui5Tooling_Build 0
+Grunt ui5Tooling -ProjectSetup 0
+-Grunt -ui5Tooling 0
+-NoRouting -SecondPage 0
+-NoRouting -ThirdPage 0
+-TwoPage SecondPage 0
+-ThreePage ThirdPage 0
+-MasterDetail FirstPage 0
+-MasterDetail SecondPage 0
+-Grunt_Build -Application Grunt_Build_Application 0
+-Grunt_Build -Library Grunt_Build_Library 0
+-Grunt_Server_Build Grunt_Build 0

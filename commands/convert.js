@@ -3,13 +3,14 @@ const fs = require('fs');
 const xmlReader = require('xml-reader');
 const reader = xmlReader.create();
 const ModelRenderer = require('../lib/ModelRenderer');
+const ModelConverter = require('../lib/modelConverter');
 
-const showFeatureModel = model => {
+const showCNF = (model, cmdObj) => {
     reader.on("done", data => {
         let renderer = new ModelRenderer(data);
-
-        renderer.render();
-        renderer.showLegend();
+        let converter = new ModelConverter(renderer);
+        console.log(model + '\n');
+        console.log(converter.getCNFString(cmdObj.dimacs, cmdObj.text));
         process.exit();
     });
 
@@ -23,10 +24,13 @@ const showFeatureModel = model => {
 
 module.exports = {
     createCommand: program => {
-        program.command('show') //sub-command name
-            .alias('S')
+        program.command('convert') //sub-command name
+            .alias('C')
             .description('Shows a given feature model.')
             .arguments('<model>')
-            .action(showFeatureModel)
+            .option('-d, --dimacs', 'convert to dimacs')
+            .option('-t, --text', 'Show the feature name instead of the id')
+            .option('-s, --show', 'show the cnf')
+            .action(showCNF)
     }
 }
