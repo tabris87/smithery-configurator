@@ -99,9 +99,6 @@ TemplateGenerator -ProjectSetup 0
 ProjectSetup -Grunt 0
 Grunt -Grunt_Build 0
 Grunt_Build -Grunt_Build_Library 0
-
-c current place
-
 Grunt_Build -Grunt_Build_Application 0
 Grunt_Build_Library Grunt_Build_Application -Grunt_Build 0
 -Grunt_Build_Library -Grunt_Build_Application 0

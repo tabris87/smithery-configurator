@@ -16,6 +16,7 @@
         "colors": "^1.4.0",
         "commander": "^5.1.0",
         "logic-solver": "^2.0.1",
+        "smithery-equipment": "git+https://github.com/tabris87/smithery-equipment.git#dev",
         "xml-reader": "^2.4.3"
     }
 }
