@@ -5,21 +5,6 @@ const {
 const ModelRenderer = require('../lib/ModelRenderer');
 
 const showFeatureModel = model => {
-    /* reader.on("done", data => {
-        let renderer = new ModelRenderer(data);
-
-        renderer.render();
-        renderer.showLegend();
-        process.exit();
-    });
-
-    fs.readFile(model, {
-        encoding: 'UTF-8'
-    }, (err, data) => {
-        if (err) throw err;
-        reader.parse(data);
-    }) */
-
     ModelInternal.readModelFile(model).then(oModel => {
         let renderer = new ModelRenderer(oModel);
         renderer.render();
