@@ -3,5 +3,6 @@
 module.exports = {
     show: require('./show'),
     configure: require('./configure'),
-    convert: require('./convert')
+    convert: require('./convert'),
+    validate: require('./validate')
 }
