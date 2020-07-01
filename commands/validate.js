@@ -21,6 +21,7 @@ const validate = (model) => {
         console.log(oSolution.getMap());
         console.log(oSolution.getFormula());
         console.log(oSolution.getFormula().operands.map(t => oSolver.toNameTerm(t)));
+        debugger;
         console.log(oSolver.solveAssuming(oSolution.getFormula()).getTrueVars());
         debugger;
         process.exit(0);
