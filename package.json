@@ -1,19 +1,22 @@
 {
-    "name": "featurecli-configurator",
+    "name": "smithery-configurator",
     "version": "0.1.3",
-    "description": "",
-    "main": "index.js",
-    "bin": "app.js",
-    "scripts": {
-        "test": "node app show ./test/model.xml",
-        "start": "node app configure ./test/model.xml",
-        "debug": "node --inspect-brk app show ./test/model.xml"
+    "author": "Adrian Marten",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tabris87/smithery-configurator.git"
     },
-    "author": "",
-    "license": "ISC",
+    "license": "Apache-2.0",
+    "description": "A configuration creator for FeatureIDE models used by the smithery framework",
+    "scripts": {},
+    "bin": {
+        "smith-config": "app.js"
+    },
     "dependencies": {
         "colors": "^1.4.0",
         "commander": "^5.1.0",
+        "logic-solver": "^2.0.1",
+        "smithery-equipment": "git+https://github.com/tabris87/smithery-equipment.git#dev",
         "xml-reader": "^2.4.3"
     }
 }

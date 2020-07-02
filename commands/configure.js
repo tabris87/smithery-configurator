@@ -1,9 +1,9 @@
 "use strict";
-const fs = require('fs');
-const path = require('path');
-const xmlReader = require('xml-reader');
-const reader = xmlReader.create();
 const colors = require('colors');
+const {
+    ModelInternal
+} = require('smithery-equipment');
+
 const ModelRenderer = require('../lib/ModelRenderer');
 const readline = require('readline');
 const rl = readline.createInterface({
@@ -12,6 +12,7 @@ const rl = readline.createInterface({
 });
 
 let renderer;
+let linesWritten = 0;
 
 const writeConfiguration = (aFeatures, sPath) => {
     const questionName = () => {
@@ -51,11 +52,16 @@ const writeConfiguration = (aFeatures, sPath) => {
     questionWrite();
 }
 
+const clearLines = () => {
+    process.stdout.moveCursor(0, -linesWritten);
+    linesWritten = 0;
+}
+
 const showFeatureModel = (model, sPath = './') => {
-    reader.on("done", data => {
-        renderer = new ModelRenderer(data);
+    ModelInternal.readModelFile(model).then(oModel => {
+        renderer = new ModelRenderer(oModel);
         renderer.showSelected(true);
-        renderer.render();
+        linesWritten = renderer.render();
         const ask = () => {
             rl.question('Mark/Unmark a feature by typing the name (:q for finishing configuration, :l for the legend): ',
                 answer => {
@@ -64,32 +70,30 @@ const showFeatureModel = (model, sPath = './') => {
                         console.log(`\n${colors.underline('Selected features:')} ${colors.underline(aSelectedFeatures)}\n`);
                         writeConfiguration(aSelectedFeatures, sPath);
                     } else if (answer === ":l") {
-                        renderer.addAdditionalWritenLinesToClear(1);
-                        renderer.render();
-                        renderer.showLegend();
+                        linesWritten += 1;
+                        clearLines();
+                        linesWritten = renderer.render();
+                        linesWritten += renderer.showLegend();
                         ask()
                     } else {
                         let marked = renderer.markFeatureSelected(answer);
                         if (marked) {
-                            renderer.addAdditionalWritenLinesToClear(1);
-                            renderer.render();
+                            linesWritten += 1;
+                            clearLines();
+                            linesWritten = renderer.render();
                             ask()
                         } else {
                             console.log("Sry the feature cannot be found/selected! Did you misspelled it?");
-                            renderer.addAdditionalWritenLinesToClear(2);
+                            linesWritten += 2;
                             ask();
                         }
                     }
                 });
         }
         ask();
-    });
-
-    fs.readFile(model, {
-        encoding: 'UTF-8'
-    }, (err, data) => {
-        if (err) throw err;
-        reader.parse(data);
+    }).catch(err => {
+        console.log(err);
+        process.exit(1);
     })
 }
 

@@ -1,22 +1,18 @@
 "use strict";
-const fs = require('fs');
-const xmlReader = require('xml-reader');
-const reader = xmlReader.create();
+const {
+    ModelInternal
+} = require('smithery-equipment');
 const ModelRenderer = require('../lib/ModelRenderer');
 
 const showFeatureModel = model => {
-    reader.on("done", data => {
-        let renderer = new ModelRenderer(data);
+    ModelInternal.readModelFile(model).then(oModel => {
+        let renderer = new ModelRenderer(oModel);
         renderer.render();
         renderer.showLegend();
-        process.exit();
-    });
-
-    fs.readFile(model, {
-        encoding: 'UTF-8'
-    }, (err, data) => {
-        if (err) throw err;
-        reader.parse(data);
+        process.exit(0);
+    }).catch(err => {
+        console.log(err);
+        process.exit(1);
     })
 }
 

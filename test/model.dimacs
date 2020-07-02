@@ -1,0 +1,126 @@
+c 1 TemplateGenerator
+c 2 OnePage
+c 3 TwoPage
+c 4 ThreePage
+c 5 Grunt_Server
+c 6 Grunt_Server_Build
+c 7 ui5Tooling_Server
+c 8 ui5Tooling_Server_Build
+c 9 Grunt
+c 10 Grunt_Build
+c 11 Simple
+c 12 SecondPage
+c 13 ObjectPageSecond
+c 14 ProjectSetup
+c 15 ui5Tooling
+c 16 ui5Tooling_Build
+c 17 ui5Tooling_Build_Application
+c 18 Pattern
+c 19 Table
+c 20 List
+c 21 Worklist
+c 22 Toolpage
+c 23 Base
+c 24 CodeBase
+c 25 FirstPage
+c 26 Navigation
+c 27 Routing
+c 28 NoRouting
+c 29 MasterDetail
+c 30 FlexibleColumnLayout
+c 31 Application
+c 32 Library
+c 33 Grunt_Build_Library
+c 34 Grunt_Build_Application
+c 35 WithDummyDetail
+c 36 WithEmptyDetail
+c 37 TwoPageStartOne
+c 38 MasterDetailType
+c 39 ThirdPage
+c 40 ObjectPageThird
+p cnf 40 78
+1 0
+2 -3 0
+3 -4 0
+5 -6 0
+7 -8 0
+9 -10 0
+9 -5 0
+11 -2 0
+2 -11 0
+12 -13 0
+14 -9 0
+14 -15 0
+9 15 -14 0
+-9 -15 0
+16 -17 0
+17 -16 0
+18 -19 0
+18 -20 0
+18 -21 0
+18 -22 0
+19 20 21 22 -18 0
+-19 -20 0
+-19 -21 0
+-19 -22 0
+-20 -21 0
+-20 -22 0
+-21 -22 0
+1 -23 0
+1 -24 0
+1 -14 0
+23 -1 0
+24 -1 0
+25 -18 0
+
+c /**Alternative start*/
+26 -27 0
+26 -28 0
+27 28 -26 0
+-27 -28 0
+c /**Alternative end*/
+
+c /**Alternative start*/
+27 -11 0
+27 -29 0
+27 -30 0
+11 29 30 -27 0
+-11 -29 0
+-11 -30 0
+-29 -30 0
+c /**Alternative end*/
+
+24 -31 0
+24 -32 0
+31 32 -24 0
+-31 -32 0
+10 -33 0
+10 -34 0
+33 34 -10 0
+-33 -34 0
+15 -7 0
+15 -16 0
+29 -35 0
+29 -36 0
+35 36 -29 0
+-35 -36 0
+30 -37 0
+30 -38 0
+37 38 -30 0
+-37 -38 0
+39 -40 0
+31 -26 0
+31 -25 0
+31 -12 0
+31 -39 0
+26 -31 0
+25 -31 0
+-28 -12 0
+-28 -39 0
+-3 12 0
+-4 39 0
+-29 25 0
+-29 12 0
+-10 -31 34 0
+-10 -32 33 0
+-6 10 0
